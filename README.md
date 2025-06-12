@@ -75,7 +75,7 @@ The script supports JSON configuration files. Create a `hybrid_config.json`:
 ### Configuration Options
 
 | Option | Type | Default | Description |
-|--------|----|----|----|
+|--------|----|----|------|
 | `api_token` | string | - | Your Transifex API token |
 | `organization_slug` | string | - | Your Transifex organization slug |
 | `project_slugs` | array/null | null | List of specific project slugs to download (null = all projects) |
