@@ -1,6 +1,6 @@
-# transifex-bulk-downloader
+# Transifex Bulk Downloader
 
-A hybrid Python tool that combines the Transifex API for project discovery with the official Transifex CLI for optimized bulk downloads. This tool is designed to handle large-scale translation downloads from Transifex organizations efficiently.
+A hybrid Python tool that combines the Transifex API for project discovery with the official Transifex CLI for optimized bulk downloads of source and translation files. This tool is designed to handle large-scale translation downloads from Transifex organizations efficiently.
 
 ## Features
 
