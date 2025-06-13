@@ -1,7 +1,5 @@
 # Transifex Bulk Downloader
 
-# Transifex Bulk Downloader
-
 A simplified, reliable tool for bulk downloading translation files and TMX (Translation Memory) files from Transifex using the official CLI and Python SDK.
 
 ## 🌟 Features
