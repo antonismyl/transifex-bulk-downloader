@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.1] - 2024-09-02
+
+### Added
+- Configuration choice prompt when existing config is found
+- Users can now choose to use existing configuration or create new one
+- Displays current organization and output directory before choice
+
+### Improved  
+- Simplified from 3 options to 2 clear choices: use existing or start fresh
+- Better UX for users working with multiple organizations
+
 ## [2.1.0] - 2024-09-01
 
 ### Changed

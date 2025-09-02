@@ -84,6 +84,25 @@ On first run, you'll be prompted to configure basic settings:
 
 These settings are saved to `bulk_download_config.json` for reuse.
 
+### Configuration Choice
+
+When you have an existing configuration file, you'll be prompted:
+
+```
+📄 Found existing configuration:
+   🏢 Organization: your-org-name
+   📁 Output directory: ./transifex_downloads
+
+🤔 What would you like to do?
+  [1] Use existing configuration
+  [2] Create new configuration
+
+Choose [1/2]:
+```
+
+- **Option 1**: Continue with your existing settings
+- **Option 2**: Start fresh with new API token, organization, and output directory
+
 ### Per-Session Options
 
 Each time you run file downloads, you'll be prompted for:
