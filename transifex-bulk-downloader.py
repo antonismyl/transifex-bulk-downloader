@@ -532,10 +532,9 @@ def get_user_config() -> Config:
             
             print(f"\n🤔 What would you like to do?")
             print(f"  [1] Use existing configuration")
-            print(f"  [2] Use different API token/organization")
-            print(f"  [3] Create completely new configuration")
+            print(f"  [2] Create new configuration")
             
-            choice = input("Choose [1/2/3]: ").strip()
+            choice = input("Choose [1/2]: ").strip()
             
             if choice == "1":
                 # Use existing config as-is
@@ -545,14 +544,6 @@ def get_user_config() -> Config:
                 return config
                 
             elif choice == "2":
-                # Keep structure but get new API token and org
-                print("\n🔧 Enter new credentials:")
-                config.api_token = get_api_token()
-                config.organization_slug = input("🏢 Organization slug: ").strip()
-                print("✅ Configuration updated")
-                return config
-                
-            elif choice == "3":
                 # Fall through to create new config
                 print("🔄 Creating new configuration...")
             else:
