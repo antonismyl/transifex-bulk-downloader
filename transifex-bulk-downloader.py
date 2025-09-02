@@ -541,46 +541,8 @@ def get_user_config() -> Config:
     api_token = get_api_token()
     organization_slug = input("🏢 Organization slug: ").strip()
     
-    # Download mode
-    print("\n📥 Download mode:")
-    print("  [1] Source files only")
-    print("  [2] Translation files only")
-    print("  [3] Both source and translations")
-    mode_choice = input("Choose [1/2/3]: ").strip()
-    mode_map = {"1": "source", "2": "translations", "3": "both"}
-    download_mode = mode_map.get(mode_choice, "both")
-    
-    # Translation mode
-    translation_mode = "default"
-    if download_mode in ["translations", "both"]:
-        print("\n🎯 Translation mode:")
-        modes = ['default', 'reviewed', 'proofread', 'translator', 'untranslated', 
-                'onlytranslated', 'onlyreviewed', 'onlyproofread', 'sourceastranslation']
-        for i, mode in enumerate(modes, 1):
-            print(f"  [{i}] {mode}")
-        
-        mode_choice = input(f"Choose [1-{len(modes)}]: ").strip()
-        try:
-            mode_idx = int(mode_choice) - 1
-            if 0 <= mode_idx < len(modes):
-                translation_mode = modes[mode_idx]
-        except ValueError:
-            pass
-    
-    # Project filtering
+    # Project filtering - handled during execution
     project_slugs = None
-    if input("\n📋 Download [a]ll projects or [s]pecific ones? [a/s]: ").strip().lower() == "s":
-        project_input = input("Project slugs (comma-separated): ").strip()
-        if project_input:
-            project_slugs = [slug.strip() for slug in project_input.split(",")]
-    
-    # Language filtering
-    language_codes = None
-    if download_mode in ["translations", "both"]:
-        if input("\n🌐 Download [a]ll languages or [s]pecific ones? [a/s]: ").strip().lower() == "s":
-            lang_input = input("Language codes (e.g. en,es,fr): ").strip()
-            if lang_input:
-                language_codes = [code.strip() for code in lang_input.split(",")]
     
     # Output directory
     output_dir_input = input("\n📁 Output directory (Enter for './transifex_downloads'): ").strip()
@@ -590,9 +552,6 @@ def get_user_config() -> Config:
         api_token=api_token,
         organization_slug=organization_slug,
         project_slugs=project_slugs,
-        download_mode=download_mode,
-        translation_mode=translation_mode,
-        language_codes=language_codes,
         output_directory=output_directory
     )
     
@@ -613,8 +572,8 @@ def main():
         
         # Choose operation type
         print("\n📋 What would you like to download?")
-        print("  [1] Translation files")
-        print("  [2] Translation Memory (TMX)")
+        print("  [1] Source/Translation files")
+        print("  [2] Translation Memory files")
         
         operation = input("Choose [1/2]: ").strip()
         

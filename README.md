@@ -5,7 +5,7 @@ A simplified, reliable tool for bulk downloading translation files and TMX (Tran
 ## 🌟 Features
 
 ### 📁 **Translation File Downloads**
-- **Interactive setup** with fresh prompts each session
+- **Simplified configuration**: Configure once, choose download options per run
 - **Flexible download modes**: Source only, translations only, or both
 - **Translation filtering**: 9 different translation download modes
 - **Language selection**: All languages or specific language codes
@@ -51,14 +51,14 @@ A simplified, reliable tool for bulk downloading translation files and TMX (Tran
 
 1. **Run the script**:
    ```bash
-   python bulk-download-simplified.py
+   python transifex-bulk-downloader.py
    ```
 
 2. **Choose operation type**:
    ```
    📋 What would you like to download?
-     [1] Translation files
-     [2] Translation Memory (TMX)
+     [1] Source/Translation files
+     [2] Translation Memory files
    ```
 
 3. **Follow the interactive prompts** for your chosen operation
@@ -207,3 +207,4 @@ Choose **Y** to skip project configuration and use existing settings.
 
 - **1.0**: Initial release
 - **2.0**: Major Rewrite - Simplified Architecture, Added support for TMX file downloads, added option to select download modes. Removed experimental features.
+- **2.1**: Enhanced UX - Moved download options from configuration to execution time for better flexibility
