@@ -524,16 +524,46 @@ def get_user_config() -> Config:
     config_path = Path("bulk_download_config.json")
     
     if config_path.exists():
-        print(f"📄 Found configuration file: {config_path}")
-        if input("Load configuration? [Y/n]: ").strip().lower() not in ['n', 'no']:
-            try:
-                config = Config.load_from_file(config_path)
+        try:
+            config = Config.load_from_file(config_path)
+            print(f"📄 Found existing configuration:")
+            print(f"   🏢 Organization: {config.organization_slug}")
+            print(f"   📁 Output directory: {config.output_directory or './transifex_downloads'}")
+            
+            print(f"\n🤔 What would you like to do?")
+            print(f"  [1] Use existing configuration")
+            print(f"  [2] Use different API token/organization")
+            print(f"  [3] Create completely new configuration")
+            
+            choice = input("Choose [1/2/3]: ").strip()
+            
+            if choice == "1":
+                # Use existing config as-is
                 if not config.api_token or config.api_token.startswith('***'):
                     config.api_token = get_api_token()
-                print(f"✅ Configuration loaded")
+                print("✅ Using existing configuration")
                 return config
-            except Exception as e:
-                print(f"⚠️  Could not load config: {e}")
+                
+            elif choice == "2":
+                # Keep structure but get new API token and org
+                print("\n🔧 Enter new credentials:")
+                config.api_token = get_api_token()
+                config.organization_slug = input("🏢 Organization slug: ").strip()
+                print("✅ Configuration updated")
+                return config
+                
+            elif choice == "3":
+                # Fall through to create new config
+                print("🔄 Creating new configuration...")
+            else:
+                print("❌ Invalid choice, using existing configuration")
+                if not config.api_token or config.api_token.startswith('***'):
+                    config.api_token = get_api_token()
+                return config
+                
+        except Exception as e:
+            print(f"⚠️  Could not load existing config: {e}")
+            print("🔄 Creating new configuration...")
     
     print("\n🔧 Configuration Setup")
     
